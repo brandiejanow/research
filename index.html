@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Research by Brandie Janow.">
+  <title>Research — Brandie Janow</title>
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <header class="site-nav">
+    <nav aria-label="Brandie Janow research">
+      <a href="./">Research</a>
+      <a href="https://brandiejanow.github.io/design-reservoir/" target="_top">Design Reservoir ↗</a>
+      <a href="https://brandiejanow.github.io/Knowledge-of-Design/" target="_top">Knowledge of Design ↗</a>
+      <a href="https://www.brandiejanow.com/" target="_top">BrandieJanow.com ↗</a>
+    </nav>
+    <a class="name" href="https://www.brandiejanow.com/" target="_top" aria-label="Brandie Janow"><img src="./assets/b-logo.svg" alt=""></a>
+  </header>
+
+  <main>
+    <section class="hero">
+      <p class="eyebrow">Research / Brandie Janow</p>
+      <h1>Research</h1>
+      <p class="intro">Independent research across creative economies, design, culture, systems, and futures.</p>
+      <p class="meta"><span id="total">4</span> collections</p>
+    </section>
+
+    <section class="directory" aria-label="Research directory">
+      <div class="toolbar">
+        <label class="search">
+          <span>Search</span>
+          <input id="search" type="search" placeholder="Topic, method, dataset…" autocomplete="off">
+        </label>
+        <label>
+          <span>Resource type</span>
+          <select id="type"><option value="">All resource types</option></select>
+        </label>
+        <label>
+          <span>Keyword</span>
+          <select id="keyword"><option value="">All keywords</option></select>
+        </label>
+      </div>
+
+      <div class="directory-head">
+        <p id="resultCount">4 of 4 collections</p>
+        <button id="clear" type="button">Clear filters</button>
+      </div>
+
+      <div id="list" class="resource-list"></div>
+      <p id="empty" class="empty" hidden>No research collections match those filters.</p>
+    </section>
+
+    <section class="note">
+      <p>This repository is maintained by Brandie Janow for selected independent research, datasets, methods, and public research outputs.</p>
+    </section>
+  </main>
+
+  <footer>
+    <span>© 2026 Brandie Janow</span>
+    <a href="https://www.brandiejanow.com/" target="_top">brandiejanow.com</a>
+  </footer>
+  <script src="./app.js"></script>
+</body>
+</html>

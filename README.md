@@ -1,4 +1,4 @@
-# Research — Brandie Janow
+# Research: Brandie Janow
 
 A public repository for selected independent research, datasets, methods, signals, and research outputs by Brandie Janow.
 

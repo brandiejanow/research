@@ -1,8 +1,8 @@
 const collections=[
-{name:"Research Papers",description:"Published and selected research papers, essays, and longer-form studies.",type:"Publication",years:["2026"],keywords:["Research","Papers","Publications"]},
-{name:"Datasets",description:"Structured datasets developed from original research and documented source material.",type:"Dataset",years:["2026"],keywords:["Data","Coding","Evidence"]},
-{name:"Signals + Futures",description:"Signals, observations, hypotheses, and futures research developed through ongoing study.",type:"Futures",years:["2026"],keywords:["Signals","Futures","Foresight"]},
-{name:"Methods",description:"Research methods, coding approaches, source structures, and documentation systems used across projects.",type:"Method",years:["2026"],keywords:["Methods","Coding","Sources"]}
+{name:"Research Papers",description:"Published and selected research papers, essays, and longer-form studies.",type:"Publication",years:["2026"],keywords:["Research","Papers","Publications"],links:[{title:"Making a Design Culture",url:"https://brandiejanow.github.io/Knowledge-of-Design/making-a-design-culture.html"},{title:"Saudi Arabia’s Creative Economy",url:"https://brandiejanow.github.io/Saudi-creative-sector-research/"}]},
+{name:"Datasets",description:"Structured datasets developed from original research and documented source material.",type:"Dataset",years:["2026"],keywords:["Data","Coding","Evidence"],links:[{title:"Saudi creative economy data",url:"https://brandiejanow.github.io/Saudi-creative-sector-research/evidence.html"}]},
+{name:"Signals + Futures",description:"Signals, observations, hypotheses, and futures research developed through ongoing study.",type:"Futures",years:["2026"],keywords:["Signals","Futures","Foresight"],links:[{title:"Saudi creative economy: Future Signals",url:"https://brandiejanow.github.io/Saudi-creative-sector-research/signals.html"}]},
+{name:"Methods",description:"Research methods, coding approaches, source structures, and documentation systems used across projects.",type:"Method",years:["2026"],keywords:["Methods","Coding","Sources"],links:[{title:"Design Ecosystems research model",url:"https://brandiejanow.github.io/Knowledge-of-Design/research.html#design-ecosystems"},{title:"Saudi study: Sources and notes",url:"https://brandiejanow.github.io/Saudi-creative-sector-research/sources.html"}]}
 ];
 
 const els={search:document.querySelector("#search"),type:document.querySelector("#type"),keyword:document.querySelector("#keyword"),list:document.querySelector("#list"),count:document.querySelector("#resultCount"),empty:document.querySelector("#empty"),clear:document.querySelector("#clear")};
@@ -14,10 +14,10 @@ uniq(collections.flatMap(x=>x.keywords)).forEach(v=>addOption(els.keyword,v));
 function render(){
   const q=els.search.value.trim().toLowerCase(),type=els.type.value,keyword=els.keyword.value;
   const rows=collections.filter(r=>{
-    const hay=[r.name,r.description,r.type,...r.keywords].join(" ").toLowerCase();
+    const hay=[r.name,r.description,r.type,...r.keywords,...(r.links||[]).map(x=>x.title)].join(" ").toLowerCase();
     return(!q||hay.includes(q))&&(!type||r.type===type)&&(!keyword||r.keywords.includes(keyword));
   });
-  els.list.innerHTML=rows.map(r=>'<article class="resource"><h2>'+esc(r.name)+'</h2><p class="description">'+esc(r.description)+'</p><div class="taxonomy"><span><strong>'+esc(r.type)+'</strong></span><span>'+esc(r.keywords.join(" · "))+'</span></div></article>').join("");
+  els.list.innerHTML=rows.map(r=>'<article class="resource"><h2>'+esc(r.name)+'</h2><p class="description">'+esc(r.description)+'<span class="collection-links">'+(r.links||[]).map(x=>'<a href="'+esc(x.url)+'" target="_blank" rel="noopener noreferrer">'+esc(x.title)+' ↗</a>').join("")+'</span></p><div class="taxonomy"><span><strong>'+esc(r.type)+'</strong></span><span>'+esc(r.keywords.join(" · "))+'</span></div></article>').join("");
   els.count.textContent=rows.length+" of "+collections.length+" collections";
   els.empty.hidden=rows.length!==0;
 }
